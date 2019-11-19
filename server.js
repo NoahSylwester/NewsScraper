@@ -4,13 +4,25 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
+// var hbsObject = {
+//   cats: data
+// };
+// console.log(hbsObject);
+// res.render("index", hbsObject);
+
 // Require all models
-// var db = require("./models");
+var db = require("./models");
 
 const PORT = process.env.PORT || 8080;
 
 // Initialize Express
 const app = express();
+
+// Set Handlebars.
+const exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 
 // Configure middleware
 
