@@ -1,26 +1,37 @@
-{{!-- <h1>Cats!</h1>
+<div id="header" class="jumbotron">
+  <h1>ECHOJS ARTICLES</h1>
 
-<h2>Cats that are not sleepy!</h2>
+  <h2>Articles from echojs</h2>
+
+  <button id="scrape-button" class="btn btn-lg btn-light">Update articles</button>
+</div>
+
+<div id="articles">
+  <div>
+    {{#each articles}}
+      <div class="article" data-id="{{_id}}">
+        <h3>{{title}}</h2>
+        <a href="{{link}}">{{link}}</a>
+        <div>
+          <button class="btn btn-sm btn-dark add-note">Add note</button>
+        </div>
+        <div class="comments"></div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{!-- <h2>dbArticle that are sleepy!</h2>
 
 <ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
+  {{#each dbArticle}}
     {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
+      {{> dbArticle/cat-block sleep=false}}
     {{/if}}
   {{/each}}
-</ul>
+</ul> --}}
 
-<h2>Add a Cat</h2>
+{{!-- <h2>Add a Cat</h2>
 <form class="create-form">
 
   <div class="form-group">

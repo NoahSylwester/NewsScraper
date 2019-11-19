@@ -87,7 +87,12 @@ app.get("/articles", function(req, res) {
   db.Article.find({})
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
+
+      let hbsObject = {
+        articles: dbArticle,
+      };
+      console.log(dbArticle);
+      res.render("index", hbsObject);
     })
     .catch(function(err) {
       // If an error occurred, send it to the client
@@ -103,7 +108,11 @@ app.get("/articles/:id", function(req, res) {
     .populate("note")
     .then(function(dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
-      res.json(dbArticle);
+      let hbsObject = {
+        articles: dbArticle,
+      };
+      console.log(dbArticle);
+      res.render("index", hbsObject);
     })
     .catch(function(err) {
       // If an error occurred, send it to the client
