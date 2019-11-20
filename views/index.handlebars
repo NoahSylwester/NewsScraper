@@ -1,5 +1,5 @@
 <div id="header" class="jumbotron">
-  <h1>Monster news</h1>
+  <h1>Monster News</h1>
 
   <h3>For when checking your closet isn't enough</h3>
 
@@ -19,7 +19,7 @@
         <h3>{{title}}</h3>
         <a href="{{link}}">{{link}}</a>
         <div>
-          <button class="btn btn-sm btn-dark add-note">Add note</button>
+          <button class="btn btn-sm btn-dark add-note" data-toggle="modal" data-target="#noteModal">Add note</button>
         </div>
         <div class="comments"></div>
       </div>
@@ -54,28 +54,28 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="noteModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="noteModalLongTitle">Add a comment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+          <div class="form-group">
+            <label for="aliasInput">Alias</label>
+            <input type="text" class="form-control" id="aliasInput" placeholder="Your alias">
+          </div>
+
+          <div class="form-group">
+            <label for="commentInput">Comment</label>
+            <textarea class="form-control" id="commentInput" rows="3" placeholder="Enter Comment"></textarea>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="save-button" class="btn btn-dark">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
-
-  {{!-- <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form> --}} --}}
