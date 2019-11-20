@@ -13,12 +13,50 @@ h1 {
   border: solid 2px rgba(128, 128, 128, 0.562);
   border-radius: 7px;
 }
+.article:hover {
+  box-shadow: 0 0 20px rgb(80, 63, 15);
+}
 .comments-card {
   background: rgba(255, 255, 255, 0) !important;
   border-radius: 7px !important;
 }
 .comments-card .card-header {
   padding: 0 !important;
+}
+.comments-toggler {
+  color: rgb(38,37,34) !important;
+  text-decoration: none !important;
+}
+.comments-toggler:hover {
+  color: rgb(141, 136, 108) !important;
+  text-decoration: none !important;
+}
+.card-body {
+  padding: 5px !important;
+}
+.comment {
+  padding: 5px;
+  border: 1px #b6b6b6 solid;
+  background: #fff5e1;
+  border-radius: 7px;
+  margin: 2px;
+}
+.alias-container {
+  color: rgb(105, 105, 105);
+  margin: 0;
+}
+.alias {
+  color: rgb(182, 9, 9);
+}
+.comment-date {
+  font-size: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.comment-body {
+  padding-left: 10px;
+  margin: 0;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 .add-note {
   margin-top: 10px;
