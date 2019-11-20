@@ -140,7 +140,7 @@ app.get("/scrape", function(req, res) {
   
   })
 }).then(function() {
-  axios.get("https://mysteriousuniverse.org/tag/cryptid/").then(function(response) {
+  axios.get("https://mysteriousuniverse.org/category/cryptozoology/").then(function(response) {
   // Then, we load that into cheerio and save it to $ for a shorthand selector
   var $ = cheerio.load(response.data);
 

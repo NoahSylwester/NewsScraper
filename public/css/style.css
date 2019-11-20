@@ -13,6 +13,13 @@ h1 {
   border: solid 2px rgba(128, 128, 128, 0.562);
   border-radius: 7px;
 }
+.comments-card {
+  background: rgba(255, 255, 255, 0) !important;
+  border-radius: 7px !important;
+}
+.comments-card .card-header {
+  padding: 0 !important;
+}
 .add-note {
   margin-top: 10px;
 }
