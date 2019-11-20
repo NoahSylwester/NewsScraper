@@ -2,6 +2,9 @@ body {
   padding: 20px;
   background: rgb(38,37,34) !important;
 }
+h1 {
+  font-size: 4rem !important;
+}
 .article {
   background: #cccccc;
   padding: 10px;

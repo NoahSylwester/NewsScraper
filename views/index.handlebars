@@ -1,7 +1,7 @@
 <div id="header" class="jumbotron">
-  <h1>ECHOJS ARTICLES</h1>
+  <h1>Monster news</h1>
 
-  <h2>Articles from echojs</h2>
+  <h3>Unknown made known</h3>
 
   <button id="scrape-button" class="btn btn-lg btn-light">Update articles</button>
 </div>
@@ -10,6 +10,9 @@
   <div>
     {{#each articles}}
       <div class="article" data-id="{{_id}}">
+        <div>
+          Obtained from: <a href="http://www.echojs.com/">{{source}}</a>
+        </div>
         <h3>{{title}}</h2>
         <a href="{{link}}">{{link}}</a>
         <div>
