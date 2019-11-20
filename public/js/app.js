@@ -1,11 +1,15 @@
 $('#scrape-button').on('click', function(event) {
   event.preventDefault();
+  $('.modal-body').html('<h2>Scraping some monstrous news for you...</h2>');
   $.ajax({
       method: "GET",
       url: "/scrape",
     }).then(function(res) {
       console.log(res);
-      location.reload();
+      $('.modal-body').html('<h2>Scraping complete!</h2>');
+      setTimeout(function() {
+        location.reload();
+      }, 2000)
   });
 });
 

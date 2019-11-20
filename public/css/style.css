@@ -13,8 +13,11 @@ h1 {
   border: solid 2px rgba(128, 128, 128, 0.562);
   border-radius: 7px;
 }
+.add-note {
+  margin-top: 10px;
+}
 #header {
-  color: #cccccc;
+  color: #fffae1;
   text-shadow: 0 0 40px black;
   box-shadow: 0 0 30px black;
   height: 500px;
@@ -28,4 +31,10 @@ h1 {
 #scrape-button {
   margin: 10px;
   box-shadow: 0 0 30px white;
+}
+#scrapeModal {
+  text-align: center;
+}
+#scrapeModal .modal-body {
+  box-shadow: 0 0 50px whitesmoke;
 }

@@ -136,14 +136,203 @@ app.get("/scrape", function(req, res) {
     });
 
     // Send a message to the client
-    res.send("Scrape Complete");
+    // res.send("Scrape Complete");
   
   })
+}).then(function() {
+  axios.get("https://mysteriousuniverse.org/tag/cryptid/").then(function(response) {
+  // Then, we load that into cheerio and save it to $ for a shorthand selector
+  var $ = cheerio.load(response.data);
+
+
+  // Now, we grab every h2 within an article tag, and do the following:
+  $("article").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
+    if (!existingArticles.includes($(this).find('.article-header').find('.entry-title').find('a').attr('href'))) {
+    // Add the text and href of every link, and save them as properties of the result object
+    result.title = $(this)
+      .find('.article-header')
+      .find('.entry-title')
+      .find('a')
+      .attr('title');
+    result.link = $(this)
+      .find('.article-header')
+      .find('.entry-title')
+      .find('a')
+      .attr('href');
+    result.datetime = moment($(this)
+      .find('.article-header')
+      .find('.byline')
+      .find('time')
+      .attr('datetime')).format("YYYY-MM-DD");
+    result.source = "Mysterious Universe";
+
+    // Create a new Article using the `result` object built from scraping
+    db.Article.create(result)
+      .then(function(dbArticle) {
+        // View the added result in the console
+        console.log(dbArticle);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
+    }
+  });
+
+  // Send a message to the client
+  // res.send("Scrape Complete");
+
+})
+}).then(function() {
+  axios.get("http://bigfootevidence.blogspot.com/").then(function(response) {
+  // Then, we load that into cheerio and save it to $ for a shorthand selector
+  var $ = cheerio.load(response.data);
+
+
+  // Now, we grab every h2 within an article tag, and do the following:
+  $(".post-outer").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
+    if (!existingArticles.includes($(this).find('.post').find('.post-title').find('a').attr('href'))) {
+    // Add the text and href of every link, and save them as properties of the result object
+    result.title = $(this)
+      .find('.post')
+      .find('.post-title')
+      .find('a')
+      .text();
+    result.link = $(this)
+      .find('.post')
+      .find('.post-title')
+      .find('a')
+      .attr('href');
+    result.datetime = moment($(this)
+      .find('.post')
+      .find('.post-footer')
+      .find('.post-footer-line')
+      .find('.post-timestamp')
+      .find('.timestamp-link')
+      .find('abbr')
+      .attr('title')).format("YYYY-MM-DD");
+    result.source = "Bigfoot Evidence";
+
+    // Create a new Article using the `result` object built from scraping
+    db.Article.create(result)
+      .then(function(dbArticle) {
+        // View the added result in the console
+        console.log(dbArticle);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
+    }
+  });
+
+  // Send a message to the client
+  // res.send("Scrape Complete");
+
+})
+}).then(function() {
+  axios.get("https://www.unexplained-mysteries.com/search.php").then(function(response) {
+  // Then, we load that into cheerio and save it to $ for a shorthand selector
+  var $ = cheerio.load(response.data);
+
+
+  // Now, we grab every h2 within an article tag, and do the following:
+  $(".fullwidthsubfull").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
+    if (!existingArticles.includes($(this).find('.bigheader').find('.blacklink').attr('href'))) {
+    // Add the text and href of every link, and save them as properties of the result object
+    result.title = $(this)
+      .find('.bigheader')
+      .find('.blacklink')
+      .text()
+    result.link = $(this)
+      .find('.bigheader')
+      .find('.blacklink')
+      .attr('href');
+    result.datetime = $(this)
+      .find('span:nth-of-type(2)')
+      .text();
+    result.datetime = moment(result.datetime
+      .slice(result.datetime.indexOf("|") + 12, result.datetime.lastIndexOf("|") - 1)).format("YYYY-MM-DD");
+    result.source = "Unexplained Mysteries";
+
+    // Create a new Article using the `result` object built from scraping
+    db.Article.create(result)
+      .then(function(dbArticle) {
+        // View the added result in the console
+        console.log(dbArticle);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
+    }
+  });
+
+  // Send a message to the client
+  // res.send("Scrape Complete");
+
+})
+}).then(function() {
+  axios.get("http://www.ghosttheory.com/").then(function(response) {
+  // Then, we load that into cheerio and save it to $ for a shorthand selector
+  var $ = cheerio.load(response.data);
+
+  // Now, we grab every h2 within an article tag, and do the following:
+  $("article").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
+    if (!existingArticles.includes($(this).find('.row').find('div:nth-of-type(2)').find('.newsmag-title').find('h3').find('a').attr('href'))) {
+    // Add the text and href of every link, and save them as properties of the result object
+    result.title = $(this)
+      .find('.row')
+      .find('div:nth-of-type(2)')
+      .find('.newsmag-title')
+      .find('h3')
+      .find('a')
+      .text()
+    result.link = $(this)
+      .find('.row')
+      .find('div:nth-of-type(2)')
+      .find('.newsmag-title')
+      .find('h3')
+      .find('a')
+      .attr('href');
+    result.datetime = moment($(this)
+      .find('.row')
+      .find('div:nth-of-type(2)')
+      .find('.newsmag-title')
+      .find('.meta')
+      .text()).format("YYYY-MM-DD");
+    result.source = "Ghost Theory";
+
+    // Create a new Article using the `result` object built from scraping
+    db.Article.create(result)
+      .then(function(dbArticle) {
+        // View the added result in the console
+        console.log(dbArticle);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
+    }
+  });
+
+  // Send a message to the client
+  res.send("Scrape Complete");
+
+})
 });
 });
 
 // Route for getting all Articles from the db
-app.get("/articles", function(req, res) {
+app.get("/", function(req, res) {
   // Grab every document in the Articles collection
   db.Article.find({}).sort({ datetime: -1 })
     .then(function(dbArticle) {
