@@ -3,6 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const moment = require('moment');
 
 // var hbsObject = {
 //   cats: data
@@ -55,23 +56,71 @@ app.get("/scrape", function(req, res) {
       res.json(err);
     });
   // First, we grab the body of the html with axios
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("https://www.singularfortean.com/news/category/cryptid").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
+
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
+    $("article").each(function(i, element) {
       // Save an empty result object
       var result = {};
-      if (!existingArticles.includes($(this).children("a").attr("href"))) {
+      if (!existingArticles.includes('https://www.singularfortean.com/' + $(this).children("a").attr("href"))) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
         .children("a")
         .text();
-      result.link = $(this)
+      result.link = 'https://www.singularfortean.com/' + $(this)
         .children("a")
         .attr("href");
-      result.source = "http://www.echojs.com/";
+      result.datetime = moment($(this)
+        .find(".BlogList-item-meta")
+        .find('time')
+        .attr('datetime')).format("YYYY-MM-DD");
+      result.source = "Fortean News";
+
+      // Create a new Article using the `result` object built from scraping
+      db.Article.create(result)
+        .then(function(dbArticle) {
+          // View the added result in the console
+          console.log(dbArticle);
+        })
+        .catch(function(err) {
+          // If an error occurred, log it
+          console.log(err);
+        });
+      }
+    });
+
+    // // Send a message to the client
+    // res.send("Scrape Complete");
+  }).then(function() {
+    axios.get("https://www.disclose.tv/d/cryptozoology").then(function(response) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(response.data);
+
+
+    // Now, we grab every h2 within an article tag, and do the following:
+    $("div.teaser--masonry").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+      if (!existingArticles.includes('https://www.disclose.tv/' + $(this).find('.dont-break-out').children("a").attr("href"))) {
+      // Add the text and href of every link, and save them as properties of the result object
+      result.title = $(this)
+        .find('.dont-break-out')
+        .children("a")
+        .find('h3')
+        .text();
+      result.link = 'https://www.disclose.tv/' + $(this)
+        .find('.dont-break-out')
+        .children("a")
+        .attr("href");
+      result.datetime = moment($(this)
+        .find(".teaser-head")
+        .find('.article-author__teaser-head')
+        .find('.teaser-head-sub')
+        .text()).format("YYYY-MM-DD");
+      result.source = "Disclose.tv";
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -88,7 +137,9 @@ app.get("/scrape", function(req, res) {
 
     // Send a message to the client
     res.send("Scrape Complete");
-  });
+  
+  })
+});
 });
 
 // Route for getting all Articles from the db

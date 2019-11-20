@@ -16,6 +16,10 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  datetime: {
+    type: String,
+    required: true,
+  },
   source: {
     type: String,
     required: true,
