@@ -45,6 +45,9 @@ h1 {
 #scrapeModal .modal-body {
   box-shadow: 0 0 50px whitesmoke;
 }
+#noteModal .modal-content {
+  box-shadow: 0 0 50px whitesmoke;
+}
 #summary {
   padding: 10px;
 }
