@@ -1,13 +1,14 @@
 body {
   padding: 20px;
   background: rgb(38,37,34) !important;
+  font-family: 'IM Fell English SC', serif !important;
 }
 h1 {
   font-size: 4rem !important;
 }
 .article {
-  background: #cccccc;
-  padding: 10px;
+  background: #d6ccab;
+  padding: 15px;
   margin: 10px;
   border: solid 2px rgba(128, 128, 128, 0.562);
   border-radius: 7px;
@@ -25,5 +26,6 @@ h1 {
   background-size: cover;
 }
 #scrape-button {
+  margin: 10px;
   box-shadow: 0 0 30px white;
 }
