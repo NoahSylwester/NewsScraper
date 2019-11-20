@@ -13,6 +13,16 @@ $('#scrape-button').on('click', function(event) {
   });
 });
 
+$('.comments-toggler').on('click', function(event) {
+  event.preventDefault();
+  let isCollapsed = $(this).attr('aria-expanded');
+  if (isCollapsed === "true") {
+    $(this).text('Hide comments');
+  }
+  else {
+    $(this).text('Show comments');
+  }
+})
 // // Whenever someone clicks a p tag
 // $(document).on("click", "p", function() {
 //   // Empty the notes from the note section

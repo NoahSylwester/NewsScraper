@@ -18,12 +18,13 @@
         </div>
         <h3>{{title}}</h3>
         <a href="{{link}}">{{link}}</a>
+        <div id="summary">No summary available.</div>
         {{!-- Comment accordion --}}
         <div class="accordion" id="accordion{{_id}}">
           <div class="card comments-card">
             <div class="card-header" id="heading{{_id}}">
               <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{_id}}" aria-expanded="true" aria-controls="collapse{{_id}}">
+                <button class="btn btn-link comments-toggler" type="button" data-toggle="collapse" data-target="#collapse{{_id}}" aria-expanded="true" aria-controls="collapse{{_id}}">
                   Show Comments
                 </button>
               </h5>
