@@ -65,12 +65,12 @@ app.get("/scrape", function(req, res) {
     $("article").each(function(i, element) {
       // Save an empty result object
       var result = {};
-      if (!existingArticles.includes('https://www.singularfortean.com/' + $(this).children("a").attr("href"))) {
+      if (!existingArticles.includes('https://www.singularfortean.com' + $(this).children("a").attr("href"))) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
         .children("a")
         .text();
-      result.link = 'https://www.singularfortean.com/' + $(this)
+      result.link = 'https://www.singularfortean.com' + $(this)
         .children("a")
         .attr("href");
       result.datetime = moment($(this)
@@ -104,14 +104,14 @@ app.get("/scrape", function(req, res) {
     $("div.teaser--masonry").each(function(i, element) {
       // Save an empty result object
       var result = {};
-      if (!existingArticles.includes('https://www.disclose.tv/' + $(this).find('.dont-break-out').children("a").attr("href"))) {
+      if (!existingArticles.includes('https://www.disclose.tv' + $(this).find('.dont-break-out').children("a").attr("href"))) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
         .find('.dont-break-out')
         .children("a")
         .find('h3')
         .text();
-      result.link = 'https://www.disclose.tv/' + $(this)
+      result.link = 'https://www.disclose.tv' + $(this)
         .find('.dont-break-out')
         .children("a")
         .attr("href");
