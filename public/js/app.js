@@ -19,10 +19,10 @@ $('.comments-toggler').on('click', function(event) {
   if (isCollapsed === "true") {
     $(this).text('Hide comments');
   }
-  else {
+  else if (isCollapsed === "false") {
     $(this).text('Show comments');
   }
-})
+});
 // // Whenever someone clicks a p tag
 // $(document).on("click", "p", function() {
 //   // Empty the notes from the note section
