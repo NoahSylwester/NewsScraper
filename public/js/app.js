@@ -47,14 +47,14 @@ $('.comments-toggler').on("click", function () {
 $('.add-note').on('click', function(event) {
   event.preventDefault();
   $('#save-button').attr('data-id', $(this).data('id'));
+  console.log('here', $('#save-button').attr('data-id'));
 })
 
 // When you click the savenote button
-$(document).on("click", "#save-button", function() {
+$("#save-button").on("click", function() {
   if ($("#aliasInput").val() !== "" && $("#commentInput").val() !== "") {
   // Grab the id associated with the article from the submit button
-  var thisId = $(this).data("id");
-
+    let thisId = $('#save-button').attr('data-id');
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",
