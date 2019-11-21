@@ -14,7 +14,7 @@ h1 {
   border-radius: 7px;
 }
 .article:hover {
-  box-shadow: 0 0 20px rgb(80, 63, 15);
+  box-shadow: 0 0 30px rgb(80, 63, 15);
 }
 .comments-card {
   background: rgba(255, 255, 255, 0) !important;
@@ -86,8 +86,14 @@ h1 {
 #noteModal .modal-content {
   box-shadow: 0 0 50px whitesmoke;
 }
+#article-title {
+  margin: 10px;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
 #summary {
-  padding: 10px;
+  padding: 20px;
+  font-size: 1.5rem;
 }
 #commentInput {
   font-family: 'Montserrat', sans-serif;
