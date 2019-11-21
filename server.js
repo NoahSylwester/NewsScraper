@@ -216,6 +216,11 @@ app.get("/scrape", function(req, res) {
       .find('abbr')
       .attr('title')).format("YYYY-MM-DD");
     result.source = "Bigfoot Evidence";
+    result.summary = $(this)
+    .find('.post')
+    .find('.post-body')
+    .find('div:nth-of-type(3)')
+    .text();
 
     // Create a new Article using the `result` object built from scraping
     db.Article.create(result)
@@ -260,6 +265,9 @@ app.get("/scrape", function(req, res) {
     result.datetime = moment(result.datetime
       .slice(result.datetime.indexOf("|") + 12, result.datetime.lastIndexOf("|") - 1)).format("YYYY-MM-DD");
     result.source = "Unexplained Mysteries";
+    let tempSummary = $(this)
+      .text();
+    result.summary = tempSummary.slice(tempSummary.indexOf("comments") + 13).trim();
 
     // Create a new Article using the `result` object built from scraping
     db.Article.create(result)
@@ -310,6 +318,12 @@ app.get("/scrape", function(req, res) {
       .find('.meta')
       .text()).format("YYYY-MM-DD");
     result.source = "Ghost Theory";
+    result.summary = $(this)
+    .find('.row')
+    .find('div:nth-of-type(2)')
+    .find('.newsmag-content')
+    .find('p')
+    .text();
 
     // Create a new Article using the `result` object built from scraping
     db.Article.create(result)
