@@ -365,7 +365,7 @@ app.get("/", function(req, res) {
     });
 });
 
-// Route for getting all Articles from the db
+// Route for searching/filtering articles from the db
 app.post("/:query", function(req, res) {
   let query;
   if (req.params.query === 'no query') {
@@ -375,16 +375,16 @@ app.post("/:query", function(req, res) {
     query = sanitizeHtml(req.params.query);
   }
   const regex = new RegExp(query);
-  // Grab every document in the Articles collection
+  // Grab every document that matches query term and source selections
   db.Article.find({ title: { $regex: regex, $options: 'i' }, source: { $in: req.body.sources }}).sort({ datetime: -1 })
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       // console.log('article', dbArticle);
       let hbsObject = {
         articles: dbArticle,
-        layout: false,
+        layout: false, // stops the page from re-rendering against except articles
       };
-      // console.log(dbArticle);
+      // send truncated version of page (just articles)
       res.render("search", hbsObject);
     })
     .catch(function(err) {

@@ -99,13 +99,16 @@ $("#save-button").on("click", function() {
 }
 });
 
+// code for search queries
 $('#search-button').on('click', async function() {
   let query = $('#search-query').val();
   if (query === '') {
+    // default value signals to server that no input was given
     query = 'no query';
   }
   const sources = [];
   for (let i = 1; i < 7; i++) {
+    // extracts data from check boxes
     if($(`#sourceCheck${i}`).is(':checked')) {
       sources.push($(`#labelCheck${i}`)[0].innerText);
     }
@@ -116,7 +119,7 @@ $('#search-button').on('click', async function() {
     url: `/${query}`,
     data: JSON.stringify({ sources: sources })
   })
-console.log(response);
+
+  // writes new articles into page
   $('#articles').html(response);
-  // document.write(response);
 })
