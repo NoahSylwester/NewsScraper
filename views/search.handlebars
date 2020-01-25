@@ -1,0 +1,38 @@
+<div id="articles-content">
+    {{#each articles}}
+      <div class="article" data-id="{{_id}}">
+        <div>
+          {{datetime}}
+        </div>
+        <div>
+          <em>Obtained from: <span>{{source}}</span></em>
+        </div>
+        <h3 id="article-title">{{title}}</h3>
+        <a href="{{link}}">{{link}}</a>
+        <div id="summary">{{summary}}</div>
+        {{!-- Comment accordion --}}
+        <div class="accordion" id="accordion{{_id}}">
+          <div class="card comments-card">
+            <div class="card-header" id="heading{{_id}}">
+              <h5 class="mb-0">
+                <button class="btn btn-link comments-toggler" type="button" data-id="{{_id}}" data-loaded="false" data-toggle="collapse" data-target="#collapse{{_id}}" aria-expanded="true" aria-controls="collapse{{_id}}">
+                  Comments (<span id="comment-count-{{_id}}" data-id="{{_id}}">{{notes.length}}</span>)
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapse{{_id}}" class="collapse hide" aria-labelledby="heading{{_id}}" data-parent="#accordion{{_id}}">
+              <div id="comments-{{_id}}" class="card-body">
+                {{!-- comments go here --}}
+                No comments yet.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button data-id="{{_id}}" class="btn btn-sm btn-dark add-note" data-toggle="modal" data-target="#noteModal">Add comment</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>

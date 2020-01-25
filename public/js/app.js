@@ -98,3 +98,25 @@ $("#save-button").on("click", function() {
   $("#commentInput").val("");
 }
 });
+
+$('#search-button').on('click', async function() {
+  let query = $('#search-query').val();
+  if (query === '') {
+    query = 'no query';
+  }
+  const sources = [];
+  for (let i = 1; i < 7; i++) {
+    if($(`#sourceCheck${i}`).is(':checked')) {
+      sources.push($(`#labelCheck${i}`)[0].innerText);
+    }
+  }
+  const response = await $.ajax({
+    method: "POST",
+    contentType: 'application/json',
+    url: `/${query}`,
+    data: JSON.stringify({ sources: sources })
+  })
+console.log(response);
+  $('#articles').html(response);
+  // document.write(response);
+})

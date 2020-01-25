@@ -4,10 +4,11 @@
   <h3>For when checking your closet isn't enough</h3>
 
   <button id="scrape-button" class="btn btn-lg btn-light" data-toggle="modal" data-target="#scrapeModal">Update articles</button>
+  <button id="search-modal-button" class="btn btn-lg btn-light" data-toggle="modal" data-target="#searchModal">Search</button>
 </div>
 
 <div id="articles">
-  <div>
+  <div id="articles-content">
     {{#each articles}}
       <div class="article" data-id="{{_id}}">
         <div>
@@ -59,7 +60,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Note Modal -->
 <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -85,6 +86,73 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" id="save-button" data-id="0" class="btn btn-dark" data-toggle="modal" data-target="#noteModal">Submit comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLongTitle">Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class='container search-box'>
+          <div class="row">
+            <div class='col'>
+              <p>Include articles from</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck1" checked>
+                <label id="labelCheck1" class="form-check-label" for="sourceCheck1">
+                  Disclose.tv
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck2" checked>
+                <label id="labelCheck2" class="form-check-label" for="sourceCheck2">
+                  Fortean News
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck3" checked>
+                <label id="labelCheck3" class="form-check-label" for="sourceCheck3">
+                  Unexplained Mysteries
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck4" checked>
+                <label id="labelCheck4" class="form-check-label" for="sourceCheck4">
+                  Mysterious Universe
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck5" checked>
+                <label id="labelCheck5" class="form-check-label" for="sourceCheck5">
+                  Bigfoot Evidence
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sourceCheck6" checked>
+                <label id="labelCheck6" class="form-check-label" for="sourceCheck6">
+                  Ghost Theory
+                </label>
+              </div>
+              <input id="search-query" class="form-control form-control-lg" type="text" placeholder="Include a title search term">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="search-button" class="btn btn-md btn-dark" data-dismiss="modal">
+            Search
+        </button>
       </div>
     </div>
   </div>

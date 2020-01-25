@@ -61,7 +61,11 @@ h1 {
 .add-note {
   margin-top: 10px;
 }
+.search-box {
+  padding: 10px;
+}
 #header {
+  padding-top: 100px;
   color: #fffae1;
   text-shadow: 0 0 40px black;
   box-shadow: 0 0 30px black;
@@ -86,6 +90,9 @@ h1 {
 #noteModal .modal-content {
   box-shadow: 0 0 50px whitesmoke;
 }
+#searchModal .modal-content {
+  box-shadow: 0 0 50px whitesmoke;
+}
 #article-title {
   margin: 10px;
   font-size: 2.3rem;
@@ -97,4 +104,11 @@ h1 {
 }
 #commentInput {
   font-family: 'Montserrat', sans-serif;
+}
+#search-modal-button {
+  box-shadow: 0 0 30px whitesmoke;
+  margin: 20px;
+}
+#search-query {
+  margin-top: 20px;
 }
