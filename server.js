@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-const MONGODB_URI = process.env.DB_URI || "mongodb://localhost/newsScraperDatabase";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraperDatabase";
 
 // // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
